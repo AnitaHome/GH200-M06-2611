@@ -1,18 +1,18 @@
 name: "Dad Joke Action"
-description: "從外部 API 擷取隨機笑話並透過 Action Output 輸出給後續步驟"
+description: "從維基百科官方 API 擷取隨機條目摘要並透過 Action Output 輸出給後續步驟"
 author: "GH-200 Course"
 
 # 定義 Action 的輸出參數
 outputs:
   joke:
-    description: "取得的笑話純文字內容"
+    description: "取得的維基百科條目摘要純文字內容"
 
 # 定義 Action 的執行環境與進入點
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
 
 # 市集顯示與識別圖示（選用）
 branding:
-  icon: "smile"
-  color: "yellow"
+  icon: "book-open"
+  color: "blue"

@@ -1,12 +1,13 @@
 /**
- * 透過 api.shadiao.pro/du 取得隨機趣味金句
- * 採用現代 Node.js 原生 fetch API，無需依賴已廢棄的 request 套件
+ * 透過維基百科官方 API 取得隨機台灣繁體中文百科條目摘要
  */
 async function getJoke() {
-  const response = await fetch("https://api.shadiao.pro/du", {
+  const response = await fetch("https://zh.wikipedia.org/api/rest_v1/page/random/summary", {
     method: "GET",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
+      "Accept-Language": "zh-tw",
+      "User-Agent": "GitHubAction-GH200Lab/1.0",
     },
   });
 
@@ -15,7 +16,8 @@ async function getJoke() {
   }
 
   const result = await response.json();
-  return result.data.text;
+  // 回傳格式範例：「三道嶺煤礦：是一座位於...」
+  return `【${result.title}】${result.extract}`;
 }
 
 export default getJoke;

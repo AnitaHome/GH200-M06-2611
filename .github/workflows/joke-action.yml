@@ -1,0 +1,32 @@
+name: Joke Action Workflow
+
+on:
+  issue_comment:
+    types: [created]
+
+# 關鍵安全設定：僅授予寫入 Issue 留言與讀取儲存庫內容的最小權限
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  joke:
+    # 僅當 Issue 留言以 /joke 開頭時才執行本作業
+    if: startsWith(github.event.comment.body, '/joke')
+    runs-on: ubuntu-latest
+    steps:
+      - name: 簽出儲存庫代碼
+        uses: actions/checkout@v4
+
+      - name: 執行本地自訂 Action
+        id: get-joke
+        uses: ./
+
+      - name: 自動回覆笑話至 Issue 留言
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            🎭 **每日笑話放送**：
+
+            > ${{ steps.get-joke.outputs.joke }}

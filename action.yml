@@ -9,7 +9,7 @@ outputs:
 
 # 定義 Action 的執行環境與進入點
 runs:
-  using: "node24"
+  using: "node20"
   main: "dist/index.js"
 
 # 市集顯示與識別圖示（選用）

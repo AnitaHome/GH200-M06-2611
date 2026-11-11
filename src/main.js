@@ -10,7 +10,7 @@ async function run() {
     core.info(`取得成功: ${wiki}`);
 
     // 設定 Action 輸出變數，供後續步驟（Downstream Steps）使用
-    core.setOutput("joke", wiki);
+    core.setOutput("wiki", wiki);
   } catch (error) {
     // 發生例外時，通知 Runner 此步驟失敗並顯示錯誤訊息
     core.setFailed(`執行自訂 Action 失敗: ${error.message}`);

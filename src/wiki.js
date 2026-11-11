@@ -1,7 +1,7 @@
 /**
  * 透過維基百科官方 API 取得隨機台灣繁體中文百科條目摘要
  */
-async function getJoke() {
+async function getWiki() {
   const response = await fetch("https://zh.wikipedia.org/api/rest_v1/page/random/summary", {
     method: "GET",
     headers: {
@@ -20,4 +20,4 @@ async function getJoke() {
   return `【${result.title}】${result.extract}`;
 }
 
-export default getJoke;
+export default getWiki;

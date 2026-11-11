@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 簽出儲存庫代碼
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 執行本地自訂 Action
         id: get-wiki
         uses: ./
 
       - name: 自動回覆維基百科條目至 Issue 留言
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
